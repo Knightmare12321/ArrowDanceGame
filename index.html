@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./styles/style.css" />
+</head>
+
+<body class="container">
+    <div class="container-header">
+        <h1>Kenny Game</h1>
+        <button type="button" class="btn btn-danger" id="buttonQuit">Quit</button>
+        <button type="button" class="btn btn-info" id="buttonHelp" data-bs-toggle="modal" data-bs-target="#splashModal">
+            Help
+        </button>
+
+        <!-- Splash Modal -->
+        <div class="modal fade" id="splashModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Help</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        For html on bootstrap modal, the official website didn't update
+                        the lastest version so I took me a while to figure out why
+                        boiler-plate setup doesn't work. We need to replace data-toggle &
+                        data-target with a newer keywords data-bs-toggle & data-bs-target.
+                        The same goes with data-dismiss... We got scammed by Bootstrap!
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="button" class="btn btn-primary" id="buttonInfo">More info</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Modal -->
+        <div class="modal fade" id="gameModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Help</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...or maybe I didn't listen carefully in class, who knows! HA!
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-body">
+        <div class="splash-screen">
+            <h3>Splash</h3>
+            <p>
+                Press play button to play the game. If it doesn't work, press it
+                harder.
+            </p>
+            <p>
+                If you feel the styling in this page is a little bit off, don't worry,
+                creator is just being lazy, and it's good for programmer :)
+            </p>
+                <button type="button" class="btn btn-success" id="buttonStart" aria-label="First">
+                    <span class="glyphicon glyphicon-play"></span> Start!
+                </button>
+        </div>
+
+        <div class="game-screen">
+            <h3>Game</h3>
+            <p>Game in progress...</p>
+            <div class="btn-group">
+                <button type="button" class="btn btn-success" id="buttonPlay" aria-label="First">
+                    <span class="glyphicon glyphicon-play"></span> Play
+                </button>
+                <button type="button" class="btn btn-warning" id="buttonEnd" aria-label="Second">
+                    End Game
+                </button>
+            </div>
+        </div>
+        <div class="gameover-screen">
+            <h3>Gameover</h3>
+            <p>Game is terminated. See you next time!</p>
+                <button type="button" class="btn btn-success" id="buttonGameoverPlay" aria-label="First">
+                    <span class="glyphicon glyphicon-play"></span> Play Again
+                </button>
+                <button type="button" class="btn btn-warning" id="buttonGameoverQuit" aria-label="Second">
+                    Quit
+                </button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="./scripts/script.js"></script>
+</body>
+
+</html>
