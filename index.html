@@ -13,10 +13,16 @@
 
 <body class="container">
     <div class="container-header">
+        <!-- Title -->
         <h1>Arrow Dance Game</h1>
+
+        <!-- Buttons -->
         <button type="button" class="btn btn-danger" id="buttonQuit">Quit</button>
         <button type="button" class="btn btn-info" id="buttonHelp" data-bs-toggle="modal" data-bs-target="#splashModal">
             Help
+        </button>
+        <button type="button" class="btn btn-warning" id="buttonPause" aria-label="First">
+            <span class="glyphicon glyphicon-play"></span> Pause
         </button>
 
         <!-- Splash Modal -->
@@ -32,31 +38,7 @@
                     </div>
                     <div class="modal-body">
                         Press W,S,A,D to Dance! From left to right, you need to enter your direction in sequence!
-                        Remember to get as many points as possible!
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                            Close
-                        </button>
-                        <button type="button" class="btn btn-primary" id="buttonInfo">More info</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Game Modal -->
-        <div class="modal fade" id="gameModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Help</h5>
-                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        ...or maybe I didn't listen carefully in class, who knows! HA!
+                        Remember to get as many points as possible! You can make no more than 3 mistakes!
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -70,23 +52,30 @@
 
     <div class="container-body">
         <div class="splash-screen">
-            <h3>Splash</h3>
+            <h3>Welcome, Challenger</h3>
             <p>
-                Press play button to play the game. If it doesn't work, press it
+                Press "Start" button to play the game. If it doesn't work, press it
                 harder.
             </p>
             <p>
-                If you feel the styling in this page is a little bit off, don't worry,
-                creator is just being lazy, and it's good for programmer :)
+                Press "Help" button to see the rules.
             </p>
-                <button type="button" class="btn btn-success" id="buttonStart" aria-label="First">
-                    <span class="glyphicon glyphicon-play"></span> Start!
-                </button>
+            <p>
+                Enter your name to play the game!
+            </p>
+            <input type="text" id="usernameInput" placeholder="Enter your username">
+            <button type="button" class="btn btn-success" id="buttonStart" aria-label="First">
+                <span class="glyphicon glyphicon-play"></span> Start!
+            </button>
+            <span id="errorMessage" class="error-message"></span>
         </div>
 
         <div class="game-screen">
             <h3>Game</h3>
             <p>Game in progress...</p>
+            <div class="arrowArea">
+                
+            </div>
             <div class="btn-group">
                 <button type="button" class="btn btn-success" id="buttonPlay" aria-label="First">
                     <span class="glyphicon glyphicon-play"></span> Play
@@ -96,6 +85,7 @@
                 </button>
             </div>
         </div>
+
         <div class="gameover-screen">
             <h3>Gameover</h3>
             <p>Game is terminated. See you next time!</p>

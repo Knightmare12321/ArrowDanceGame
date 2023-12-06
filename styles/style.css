@@ -5,11 +5,12 @@ html {
     box-sizing: inherit;
   }
 
-  h3, h2, p {
-    margin: 15px 15px;
+  h3, h2, p, input {
+    margin: 13px 15px;
   }
 
   button {
+    position: relative;
     margin-left: 10px;
   }
 
@@ -39,8 +40,12 @@ h1 {
     text-align: center;
 }
 
+#buttonHelp {
+
+}
+
 #buttonQuit {
-    visibility: hidden;
+   
 }
 
 .container-body {
