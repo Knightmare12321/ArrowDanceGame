@@ -87,13 +87,5 @@ $("#buttonGameoverPlay").on("click", () => {
 
 $("#buttonGameoverQuit").on("click", () => {
     game.switchScreen("splash-screen")
-}),
+})
 
-generateArrowIndexs = (size) => {
-    const randomArray = [];
-    for (let i = 0; i < size; i++) {
-        const randomInt = Math.floor(Math.random()*4) + 1;
-        randomArray.push(randomInt);
-    }
-    return randomArray;
-}
