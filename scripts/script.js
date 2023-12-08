@@ -1,5 +1,5 @@
 "use strict";
-import {startGenerate} from "./arrow.js"
+import {startGenerate, endGenerate} from "./arrow.js"
 
 const game = {
     gameIsRunning : false,
@@ -10,6 +10,7 @@ const game = {
     currentScreen : "splash-screen",
     
     switchScreen: function(screenID) {
+        console.log(game);
         $(".splash-screen").css("display","none");
         $(".game-screen").css("display","none");
         $(".gameover-screen").css("display","none");
@@ -17,6 +18,7 @@ const game = {
         $("#buttonQuit").css("display", "none");
         $("#buttonHelp").css("display", "inline");
         if (screenID === "splash-screen") {
+            endGenerate();
             this.currentScreen = "splash-screen";
             $(".splash-screen").css("display","block");
             $("#buttonQuit").css("display", "none");
@@ -27,14 +29,17 @@ const game = {
             $("#buttonQuit").css("display", "inline");
             $("#buttonPause").css("display", "inline");
             $("#buttonHelp").css("display", "none");
-            startGenerate(0, 6);
+            startGenerate(0, 4);
         }
         else {
+            endGenerate();
             this.currentScreen = "gameover-screen";
             $(".gameover-screen").css("display","block");
             $("#buttonQuit").css("display", "none");
             $("#buttonPause").css("display", "none");
             $("#buttonHelp").css("display", "none");
+            $("#p-gameover").text("Thank you for playing, " + game.playerName + "!");
+            $("#p-score").text("Your Score is: " + game.playerScore);
         }
     },
     displayHelp: function() {
@@ -64,14 +69,11 @@ $("#buttonPlay").on("click", () => {
     game.gameIsRunning ? game.gameIsRunning = false : game.gameIsRunning = true;
 })
 
-$("#buttonEnd").on("click", () => {
+$("#buttonQuit").on("click", () => {
     game.switchScreen("gameover-screen");
     game.gameIsRunning = false;
 })
 
-$("#buttonQuit").on("click", () => {
-    game.switchScreen("splash-screen");
-})
 
 
 $("#buttonHelp").on("click", () => {

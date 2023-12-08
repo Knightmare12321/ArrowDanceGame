@@ -71,30 +71,34 @@
         </div>
 
         <div class="game-screen">
-            <h3>Game</h3>
+            <h2><span id='mins'>--</span>:<span id='secs'>--</span></h2>
             <p>Game in progress...</p>
             <div class="arrowArea">
                 <canvas id="arrowCanvas" width="400" height="400"></canvas>
             </div>
-            <div class="btn-group">
+            <!-- <div class="btn-group">
                 <button type="button" class="btn btn-success" id="buttonPlay" aria-label="First">
                     <span class="glyphicon glyphicon-play"></span> Play
                 </button>
                 <button type="button" class="btn btn-warning" id="buttonEnd" aria-label="Second">
                     End Game
                 </button>
+            </div> -->
+            <div class="progress-bar">
+
             </div>
         </div>
 
         <div class="gameover-screen">
             <h3>Gameover</h3>
-            <p>Game is terminated. See you next time!</p>
-                <button type="button" class="btn btn-success" id="buttonGameoverPlay" aria-label="First">
-                    <span class="glyphicon glyphicon-play"></span> Play Again
-                </button>
-                <button type="button" class="btn btn-warning" id="buttonGameoverQuit" aria-label="Second">
-                    Quit
-                </button>
+            <p id="p-gameover">Thank you for playing</p>
+            <p id="p-score">Your Score is: </p>
+            <button type="button" class="btn btn-success" id="buttonGameoverPlay" aria-label="First">
+                <span class="glyphicon glyphicon-play"></span> Play Again
+            </button>
+            <button type="button" class="btn btn-warning" id="buttonGameoverQuit" aria-label="Second">
+                Quit
+            </button>
         </div>
     </div>
 
@@ -104,6 +108,7 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <script src="./scripts/script.js" type="module"></script>
+    <script src="./scripts/timer.js"></script>
    
 </body>
 

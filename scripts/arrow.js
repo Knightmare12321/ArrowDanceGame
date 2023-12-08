@@ -1,4 +1,5 @@
-
+"use strict";
+var sets;
 var indexArray;
 var runningIndex = 0;
 var arrayLength = 4;
@@ -80,10 +81,18 @@ function handleKeyDown(event) {
 }
 
 function startGenerate(runningIndex, length) {
+    sets = 0;
     arrayLength = length;
     $(document).on('keydown', handleKeyDown);
     indexArray = generateArrowIndexs(arrayLength);
     generateArrow(runningIndex, length);
+}
+
+function endGenerate() {
+    runningIndex = 0;
+    $(document).off('keydown', handleKeyDown);
+    $("#arrowCanvas")[0].getContext('2d').clearRect(0, 0, 800, 800);
+
 }
 
 function inputSucceed() {
@@ -91,7 +100,11 @@ function inputSucceed() {
     $("#arrowCanvas")[0].getContext('2d').clearRect(0, 0, 800, 800);
     runningIndex++;
     if (runningIndex >= arrayLength) {
+        sets++;
         runningIndex = 0;
+        if (sets == 10) arrayLength++;
+        else if (sets == 20) arrayLength++;
+        else if (sets == 30) arrayLength++;
         indexArray = generateArrowIndexs(arrayLength);
         generateArrow(0, arrayLength);
     } 
@@ -105,5 +118,5 @@ function inputFail() {
 }
 
 
-export {generateArrow, startGenerate};
+export {startGenerate, endGenerate};
 
