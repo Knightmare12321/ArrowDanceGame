@@ -1,20 +1,46 @@
-// Get the canvas element and its 2d context
-const canvas = $("#arrowCanvas");
-const ctx = canvas[0].getContext('2d');
-console.log(ctx);
-// Arrow image source
-const arrowImageSrc = "./img/green-arrow-up.png";
-// Load the arrow image
-for (let i = 0; i < 4; i++) {
-    const arrowImage = new Image();
-    arrowImage.src = arrowImageSrc;
-    arrowImage.onload = () => {
-        ctx.drawImage(arrowImage, i * 50, 100, 50, 50);
-    };
+
+var indexArray;
+var runningIndex = 0;
+var arrayLength = 4;
+function generateArrow(runningIndex, length) {
+    // Get the canvas element and its 2d context
+    const canvas = $("#arrowCanvas");
+    const ctx = canvas[0].getContext('2d');
+    // Arrow image source
+    var arrowSrcFront = "./img/green-";
+    const arrowSrcEnd = ".png"
+    // Load the arrow image
+
+    for (let i = 0; i < runningIndex; i++) {
+        const arrowImage = new Image();
+        var arrowImageSrc;
+        if (indexArray[i] == 1) arrowImageSrc = arrowSrcFront + "up" + arrowSrcEnd;
+        else if (indexArray[i] == 2) arrowImageSrc = arrowSrcFront + "left" + arrowSrcEnd;
+        else if (indexArray[i] == 3) arrowImageSrc = arrowSrcFront + "down" + arrowSrcEnd;
+        else if (indexArray[i] == 4) arrowImageSrc = arrowSrcFront + "right" + arrowSrcEnd;
+        arrowImage.src = arrowImageSrc;
+        arrowImage.onload = () => {
+            ctx.drawImage(arrowImage, i * 60, 100, 40, 40);
+        };
+    }
+
+    arrowSrcFront = "./img/red-";
+
+    for (let i = runningIndex; i < length; i++) {
+        const arrowImage = new Image();
+        var arrowImageSrc;
+        if (indexArray[i] == 1) arrowImageSrc = arrowSrcFront + "up" + arrowSrcEnd;
+        else if (indexArray[i] == 2) arrowImageSrc = arrowSrcFront + "left" + arrowSrcEnd;
+        else if (indexArray[i] == 3) arrowImageSrc = arrowSrcFront + "down" + arrowSrcEnd;
+        else if (indexArray[i] == 4) arrowImageSrc = arrowSrcFront + "right" + arrowSrcEnd;
+        arrowImage.src = arrowImageSrc;
+        arrowImage.onload = () => {
+            ctx.drawImage(arrowImage, i * 60, 100, 40, 40);
+        };
+    }
 }
 
-
-generateArrowIndexs = (size) => {
+function generateArrowIndexs(size) {
     const array = [];
     for (let i = 0; i < size; i++) {
         const randomInt = Math.floor(Math.random()*4) + 1;
@@ -22,3 +48,62 @@ generateArrowIndexs = (size) => {
     }
     return array;
 }
+
+function handleKeyDown(event) {
+    // Check the event.key to determine which key was pressed
+    switch (event.key) {
+      case 'w':
+        console.log('W key pressed');
+        if (indexArray[runningIndex] == 1) inputSucceed();
+        else inputFail();
+        break;
+      case 's':
+        console.log('S key pressed');
+        if (indexArray[runningIndex] == 3) inputSucceed();
+        else inputFail();
+        break;
+      case 'a':
+        console.log('A key pressed');
+        if (indexArray[runningIndex] == 2) inputSucceed();
+        else inputFail();
+        break;
+      case 'd':
+        console.log('D key pressed');
+        if (indexArray[runningIndex] == 4) inputSucceed();
+        else inputFail();
+        break;
+      case 'q':
+        console.log('Clearing Board...');
+        $("#arrowCanvas")[0].getContext('2d').clearRect(0, 0, 800, 800);
+        break;
+    }
+}
+
+function startGenerate(runningIndex, length) {
+    arrayLength = length;
+    $(document).on('keydown', handleKeyDown);
+    indexArray = generateArrowIndexs(arrayLength);
+    generateArrow(runningIndex, length);
+}
+
+function inputSucceed() {
+    console.log("Succeed!");
+    $("#arrowCanvas")[0].getContext('2d').clearRect(0, 0, 800, 800);
+    runningIndex++;
+    if (runningIndex >= arrayLength) {
+        runningIndex = 0;
+        indexArray = generateArrowIndexs(arrayLength);
+        generateArrow(0, arrayLength);
+    } 
+    else {
+        generateArrow(runningIndex, arrayLength);
+    }
+}
+
+function inputFail() {
+
+}
+
+
+export {generateArrow, startGenerate};
+

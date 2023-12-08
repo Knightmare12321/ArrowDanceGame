@@ -1,4 +1,5 @@
 "use strict";
+import {startGenerate} from "./arrow.js"
 
 const game = {
     gameIsRunning : false,
@@ -6,9 +7,6 @@ const game = {
     playerName: null,
     playerScore: 0,
     playerLife: 3,
-    arrowLength: 4,
-    arrowRed: [],
-    arrowGreen: [],
     currentScreen : "splash-screen",
     
     switchScreen: function(screenID) {
@@ -29,6 +27,7 @@ const game = {
             $("#buttonQuit").css("display", "inline");
             $("#buttonPause").css("display", "inline");
             $("#buttonHelp").css("display", "none");
+            startGenerate(0, 6);
         }
         else {
             this.currentScreen = "gameover-screen";
@@ -37,7 +36,6 @@ const game = {
             $("#buttonPause").css("display", "none");
             $("#buttonHelp").css("display", "none");
         }
-        
     },
     displayHelp: function() {
         if (this.currentScreen == "game-screen" && this.gameIsRunning) {
