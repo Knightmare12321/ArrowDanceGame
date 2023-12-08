@@ -20,6 +20,7 @@ const clock = {
             this.pauseTimer();
         })
         this.resetTimer();
+        this.startTimer();
     },
     updateClockDisplay : function () {
         this.mins.html((Math.floor(this.timeRemaining / 60) < 10 ? "0" : "")
@@ -75,6 +76,4 @@ const clock = {
     }
 }
 
-$(document).ready(() => {
-    clock.setup();
-})
+export default clock;

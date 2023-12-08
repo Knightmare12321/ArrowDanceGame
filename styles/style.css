@@ -89,3 +89,9 @@ h1 {
     width: 100%;
     height: 5px;
 }
+
+#scoreCanvas {
+    position: absolute;
+    top: 100px;
+    left: 600px;
+}

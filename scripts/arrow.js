@@ -1,8 +1,11 @@
 "use strict";
+import clock from "./timer.js"
+
 var sets;
 var indexArray;
 var runningIndex = 0;
 var arrayLength = 4;
+var errors = 0;
 function generateArrow(runningIndex, length) {
     // Get the canvas element and its 2d context
     const canvas = $("#arrowCanvas");
@@ -82,6 +85,7 @@ function handleKeyDown(event) {
 
 function startGenerate(runningIndex, length) {
     sets = 0;
+    errors = 0;
     arrayLength = length;
     $(document).on('keydown', handleKeyDown);
     indexArray = generateArrowIndexs(arrayLength);
@@ -113,8 +117,31 @@ function inputSucceed() {
     }
 }
 
-function inputFail() {
+const canvas = document.getElementById("scoreCanvas");
+    const ctx = canvas.getContext("2d");
 
+    ctx.beginPath();
+    ctx.rect(20, 20, 150, 100);
+    ctx.stroke();
+
+function inputFail() {
+    const canvas = document.getElementById("scoreCanvas");
+    const ctx = canvas.getContext("2d");
+
+    ctx.beginPath();
+    ctx.rect(20, 20, 150, 100);
+    ctx.stroke();
+
+    // var temp = $("#scoreCanvas")[0].getContext('2d');
+    // var cross = new Image();
+    // cross.src = "./img/x.png";
+    // console.log(temp);
+    // console.log(cross);
+    // cross.onload = () => {
+    //     temp.beginPath();
+    //     temp.rect(20, 20, 150, 100);
+    //     temp.stroke();
+    // };
 }
 
 

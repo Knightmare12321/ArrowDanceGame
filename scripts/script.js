@@ -1,5 +1,6 @@
 "use strict";
 import {startGenerate, endGenerate} from "./arrow.js"
+import clock from "./timer.js"
 
 const game = {
     gameIsRunning : false,
@@ -29,6 +30,7 @@ const game = {
             $("#buttonQuit").css("display", "inline");
             $("#buttonPause").css("display", "inline");
             $("#buttonHelp").css("display", "none");
+            clock.setup();
             startGenerate(0, 4);
         }
         else {
