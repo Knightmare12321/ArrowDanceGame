@@ -1,6 +1,6 @@
 "use strict";
-import clock from "./timer.js"
-import game from "./script.js"
+import game from "./script.js";
+import clock from "./timer.js";
 var sets;
 var indexArray;
 var runningIndex = 0;
@@ -55,31 +55,25 @@ function generateArrowIndexs(size) {
 
 function handleKeyDown(event) {
     // Check the event.key to determine which key was pressed
-    switch (event.key) {
-      case 'w':
-        console.log('W key pressed');
-        if (indexArray[runningIndex] == 1) inputSucceed();
-        else inputFail();
-        break;
-      case 's':
-        console.log('S key pressed');
-        if (indexArray[runningIndex] == 3) inputSucceed();
-        else inputFail();
-        break;
-      case 'a':
-        console.log('A key pressed');
-        if (indexArray[runningIndex] == 2) inputSucceed();
-        else inputFail();
-        break;
-      case 'd':
-        console.log('D key pressed');
-        if (indexArray[runningIndex] == 4) inputSucceed();
-        else inputFail();
-        break;
-      case 'q':
-        console.log('Clearing Board...');
-        $("#arrowCanvas")[0].getContext('2d').clearRect(0, 0, 800, 800);
-        break;
+    if (clock.isRunning) {
+        switch (event.key) {
+        case 'w':
+            if (indexArray[runningIndex] == 1) inputSucceed();
+            else inputFail();
+            break;
+        case 's':
+            if (indexArray[runningIndex] == 3) inputSucceed();
+            else inputFail();
+            break;
+        case 'a':
+            if (indexArray[runningIndex] == 2) inputSucceed();
+            else inputFail();
+            break;
+        case 'd':
+            if (indexArray[runningIndex] == 4) inputSucceed();
+            else inputFail();
+            break;
+        }
     }
 }
 
@@ -87,6 +81,7 @@ function startGenerate(runningIndex, length) {
     sets = 0;
     errors = 0;
     game.playerScore = 0;
+    $("#scoreInGame").text("Score: " + game.playerScore);
     $("#scoreCanvas")[0].getContext('2d').clearRect(0, 0, 800, 800);
     arrayLength = length;
     $(document).on('keydown', handleKeyDown);
@@ -98,12 +93,11 @@ function endGenerate() {
     runningIndex = 0;
     $(document).off('keydown', handleKeyDown);
     $("#arrowCanvas")[0].getContext('2d').clearRect(0, 0, 800, 800);
-
 }
 
 function inputSucceed() {
     game.playerScore++;
-    console.log("Succeed!");
+    $("#scoreInGame").text("Score: " + game.playerScore);
     $("#arrowCanvas")[0].getContext('2d').clearRect(0, 0, 800, 800);
     runningIndex++;
     if (runningIndex >= arrayLength) {
@@ -128,8 +122,6 @@ function inputFail() {
     var temp = $("#scoreCanvas")[0].getContext('2d');
     var cross = new Image();
     cross.src = "./img/x.png";
-    console.log(temp);
-    console.log(cross);
     cross.onload = () => {
         temp.drawImage(cross, errors * 30, 0, 40, 40);
     };

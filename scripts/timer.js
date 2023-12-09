@@ -9,7 +9,7 @@ const clock = {
     mins : $("#mins"),
     secs : $("#secs"),
     progressBar : $(".progress-bar"),
-    buttonPlay : $(".buttonPlay"),
+    buttonPlay : $("#buttonPlay"),
     buttonPause : $("#buttonPause"),
     intervalId : 0,
 

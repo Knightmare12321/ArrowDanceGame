@@ -24,9 +24,9 @@ html {
     border: 2px solid red;
 }
 
-.containerPlay {
+/* .containerPlay {
     border: 2px dashed lightgreen;
-}
+} */
 
 .container-header {
     background-color: pink;
@@ -88,6 +88,19 @@ h1 {
 
 #scoreCanvas {
     position: absolute;
-    top: 100px;
-    left: 400px;
+    top: 150px;
+    left: 370px;
+}
+
+#scoreInGame {
+    position: absolute;
+    top: 110px;
+    right: 130px;
+}
+
+#buttonPlay {
+    position: relative;
+    display: none;
+    left: 163px;
+    bottom: 38px;
 }

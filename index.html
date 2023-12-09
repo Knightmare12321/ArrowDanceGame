@@ -24,6 +24,9 @@
         <button type="button" class="btn btn-warning" id="buttonPause" aria-label="First">
             <span class="glyphicon glyphicon-play"></span> Pause
         </button>
+        <button type="button" class="btn btn-success" id="buttonPlay" aria-label="First">
+            <span class="glyphicon glyphicon-play"></span> Continue
+        </button>
 
         <!-- Splash Modal -->
         <div class="modal fade" id="splashModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -89,16 +92,12 @@
             <div class="arrowArea">
                 <canvas id="arrowCanvas" width="400" height="400"></canvas>
             </div>
-            <!-- <div class="btn-group">
-                <button type="button" class="btn btn-success" id="buttonPlay" aria-label="First">
-                    <span class="glyphicon glyphicon-play"></span> Play
-                </button>
-                <button type="button" class="btn btn-warning" id="buttonEnd" aria-label="Second">
-                    End Game
-                </button>
-            </div> -->
+
             <div class="progress-bar">
 
+            </div>
+            <div id="scoreInGame">
+                <h4>Score: 0</h4>
             </div>
         </div>
 

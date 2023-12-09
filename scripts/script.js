@@ -22,6 +22,7 @@ const game = {
             endGenerate();
             this.currentScreen = "splash-screen";
             $(".splash-screen").css("display","block");
+            $("#buttonPlay").css("display", "none");
             $("#buttonQuit").css("display", "none");
         }
         else if (screenID === "game-screen") {
@@ -31,6 +32,7 @@ const game = {
             else if (time == "3") this.time = 30;
             this.currentScreen = "game-screen";
             $(".game-screen").css("display","block");
+            $("#buttonPlay").css("display", "block");
             $("#buttonQuit").css("display", "inline");
             $("#buttonPause").css("display", "inline");
             $("#buttonHelp").css("display", "none");
@@ -43,6 +45,7 @@ const game = {
             $(".gameover-screen").css("display","block");
             $("#buttonQuit").css("display", "none");
             $("#buttonPause").css("display", "none");
+            $("#buttonPlay").css("display", "none");
             $("#buttonHelp").css("display", "none");
             $("#p-gameover").text("Thank you for playing, " + game.playerName + "!");
             $("#p-score").text("Your Score is: " + game.playerScore);
