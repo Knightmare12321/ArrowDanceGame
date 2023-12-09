@@ -1,18 +1,20 @@
 "use strict"
+import game from "./script.js";
 
 const clock = {
     isRunning : false,
-    timeTotal : 60,
+    timeTotal : 5,
     timeRemaining : 60,
     LoopDuration : 1000,
     mins : $("#mins"),
     secs : $("#secs"),
     progressBar : $(".progress-bar"),
     buttonPlay : $(".buttonPlay"),
-    buttonPause : $(".buttonPause"),
+    buttonPause : $("#buttonPause"),
     intervalId : 0,
 
     setup : function () {
+        if (game != null) this.timeTotal = game.time;
         this.buttonPlay.on("click", () => {
             this.startTimer();
         })
@@ -29,7 +31,7 @@ const clock = {
         + this.timeRemaining % 60);
     },
     updateProgressBar : function () {
-        var percentage = (this.timeRemaining * 100 / 90) + "%";
+        var percentage = (this.timeRemaining * 100 / this.timeTotal) + "%";
         this.progressBar.css("width", percentage);
     },
     countdownLoop : function () {
@@ -42,9 +44,8 @@ const clock = {
         else {
             window.clearInterval(this.intervalId);
             this.buttonPause.addClass("end");
-            window.setTimeout(() => {
-                this.resetTimer();
-            }, 5000)
+            this.resetTimer();
+            game.switchScreen("game-over");
         }
     },
     startTimer : function () {

@@ -1,6 +1,6 @@
 "use strict";
 import clock from "./timer.js"
-
+import game from "./script.js"
 var sets;
 var indexArray;
 var runningIndex = 0;
@@ -86,6 +86,8 @@ function handleKeyDown(event) {
 function startGenerate(runningIndex, length) {
     sets = 0;
     errors = 0;
+    game.playerScore = 0;
+    $("#scoreCanvas")[0].getContext('2d').clearRect(0, 0, 800, 800);
     arrayLength = length;
     $(document).on('keydown', handleKeyDown);
     indexArray = generateArrowIndexs(arrayLength);
@@ -100,6 +102,7 @@ function endGenerate() {
 }
 
 function inputSucceed() {
+    game.playerScore++;
     console.log("Succeed!");
     $("#arrowCanvas")[0].getContext('2d').clearRect(0, 0, 800, 800);
     runningIndex++;
@@ -117,33 +120,20 @@ function inputSucceed() {
     }
 }
 
-const canvas = document.getElementById("scoreCanvas");
-    const ctx = canvas.getContext("2d");
-
-    ctx.beginPath();
-    ctx.rect(20, 20, 150, 100);
-    ctx.stroke();
-
 function inputFail() {
-    const canvas = document.getElementById("scoreCanvas");
-    const ctx = canvas.getContext("2d");
-
-    ctx.beginPath();
-    ctx.rect(20, 20, 150, 100);
-    ctx.stroke();
-
-    // var temp = $("#scoreCanvas")[0].getContext('2d');
-    // var cross = new Image();
-    // cross.src = "./img/x.png";
-    // console.log(temp);
-    // console.log(cross);
-    // cross.onload = () => {
-    //     temp.beginPath();
-    //     temp.rect(20, 20, 150, 100);
-    //     temp.stroke();
-    // };
+    errors++;
+    if (errors == 3) {
+        game.switchScreen("game-over");
+    }
+    var temp = $("#scoreCanvas")[0].getContext('2d');
+    var cross = new Image();
+    cross.src = "./img/x.png";
+    console.log(temp);
+    console.log(cross);
+    cross.onload = () => {
+        temp.drawImage(cross, errors * 30, 0, 40, 40);
+    };
 }
-
 
 export {startGenerate, endGenerate};
 

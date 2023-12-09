@@ -54,15 +54,27 @@
         <div class="splash-screen">
             <h3>Welcome, Challenger</h3>
             <p>
-                Press "Start" button to play the game. If it doesn't work, press it
-                harder.
+                Press "Start" button to play the game.
             </p>
             <p>
                 Press "Help" button to see the rules.
             </p>
             <p>
-                Enter your name to play the game!
+                Easy = 60 sec, Normal = 45 sec, Hard = 30 sec.
             </p>
+            <p>
+                Good luck!
+            </p>
+            <div class="btn-group" role="group" id="difficulty-selection" aria-label="Difficulty Selection">
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" value="1" checked>
+                <label class="btn btn-outline-primary" for="btnradio1">Easy</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" value="2">
+                <label class="btn btn-outline-primary" for="btnradio2">Normal</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" value="3">
+                <label class="btn btn-outline-primary" for="btnradio3">Hard</label>
+            </div>
             <input type="text" id="usernameInput" placeholder="Enter your username">
             <button type="button" class="btn btn-success" id="buttonStart" aria-label="First">
                 <span class="glyphicon glyphicon-play"></span> Start!

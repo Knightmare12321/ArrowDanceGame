@@ -8,10 +8,10 @@ const game = {
     playerName: null,
     playerScore: 0,
     playerLife: 3,
+    time: 60,
     currentScreen : "splash-screen",
     
     switchScreen: function(screenID) {
-        console.log(game);
         $(".splash-screen").css("display","none");
         $(".game-screen").css("display","none");
         $(".gameover-screen").css("display","none");
@@ -25,6 +25,10 @@ const game = {
             $("#buttonQuit").css("display", "none");
         }
         else if (screenID === "game-screen") {
+            var time = $("#difficulty-selection input[type='radio']:checked").val();
+            if (time == "1") this.time = 60;
+            else if (time == "2") this.time = 45;
+            else if (time == "3") this.time = 30;
             this.currentScreen = "game-screen";
             $(".game-screen").css("display","block");
             $("#buttonQuit").css("display", "inline");
@@ -91,3 +95,4 @@ $("#buttonGameoverQuit").on("click", () => {
     game.switchScreen("splash-screen")
 })
 
+export default game;
